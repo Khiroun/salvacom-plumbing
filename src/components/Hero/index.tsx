@@ -1,36 +1,14 @@
-import BingMapsReact from "bingmaps-react";
-
+import Left from "./Left";
+import Right from "./Right";
+import Wrapper from "./Wrapper";
 const Hero = () => {
-  const center = { latitude: 36.716, longitude: 3.003 };
-  const pushPin = {
-    center,
-    options: {},
-  };
-  const pushPins = [pushPin];
+  //  const center = { latitude: 36.716, longitude: 3.003 };
+
   return (
-    <div id="myMap" style={{ width: "100%", height: "360px" }}>
-      <BingMapsReact
-        bingMapsKey="Anx4mwLDKI3uWURZVzqDwyAy5SMpfR6Co1jd-NC2XkbkOHSgfZyiJrKvQlIEAcmN"
-        height="100%"
-        mapOptions={{
-          navigationBarMode: "square",
-          disableBirdseye: true,
-        }}
-        width="100%"
-        viewOptions={{
-          center,
-          mapTypeId: "aerial",
-        }}
-        pushPins={pushPins}
-        infoboxes={[
-          {
-            location: center,
-            option: { title: "Chennai", description: "..." },
-            addHandler: { type: "click", callback: () => {} },
-          },
-        ]}
-      />
-    </div>
+    <Wrapper>
+      <Left />
+      <Right />
+    </Wrapper>
   );
 };
 

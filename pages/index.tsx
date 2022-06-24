@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import {
   Navbar,
@@ -6,6 +7,12 @@ import {
   ContactAndServicesSection,
   Footer,
 } from "../src/components";
+const LocationsSection = dynamic(
+  () => import("../src/components/LocationsSection"),
+  {
+    ssr: false,
+  }
+);
 export default function Home() {
   return (
     <div>
@@ -15,12 +22,17 @@ export default function Home() {
         <link
           href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
           rel="stylesheet"
-        ></link>
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Navbar />
       <Hero />
       <DescriptionSection />
       <ContactAndServicesSection />
+      <LocationsSection />
       <Footer />
     </div>
   );
