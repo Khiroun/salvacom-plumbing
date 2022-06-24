@@ -2,6 +2,11 @@ import BingMapsReact from "bingmaps-react";
 
 const Hero = () => {
   const center = { latitude: 36.716, longitude: 3.003 };
+  const pushPin = {
+    center,
+    options: {},
+  };
+  const pushPins = [pushPin];
   return (
     <div id="myMap" style={{ width: "100%", height: "360px" }}>
       <BingMapsReact
@@ -16,12 +21,7 @@ const Hero = () => {
           center,
           mapTypeId: "aerial",
         }}
-        pushPins={[
-          {
-            location: center,
-            option: { color: "red", width: "10px", innerHeight: "10px" },
-          },
-        ]}
+        pushPins={pushPins}
         infoboxes={[
           {
             location: center,

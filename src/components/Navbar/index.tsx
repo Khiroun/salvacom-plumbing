@@ -4,7 +4,6 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import { HiMenuAlt2 as MenuIcon } from "react-icons/hi";
-import { MdAdb as AdbIcon } from "react-icons/md";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Wrapper from "./Wrapper";
@@ -16,7 +15,7 @@ const menuItems = [
   },
   {
     name: "Nos sites",
-    link: "#locations",
+    link: "/locations",
   },
   {
     name: "Nous conatcter",
