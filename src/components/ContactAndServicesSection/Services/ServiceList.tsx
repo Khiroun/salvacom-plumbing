@@ -3,14 +3,6 @@ import styled from "@emotion/styled";
 import { useGetServices } from "../../../hooks";
 import CircularProgress from "@mui/material/CircularProgress";
 const ServiceList = () => {
-  const serviceList = [
-    "Service 1",
-    "Service 2",
-    "Service 3",
-    "Service 4",
-    "Service 5",
-    "Service 6",
-  ];
   const { getServices, loading, services } = useGetServices();
   useEffect(() => {
     getServices();
@@ -20,7 +12,11 @@ const ServiceList = () => {
   return (
     <StyledServiceList>
       {services.map((service) => {
-        return <li key={service.id}>{service.name}</li>;
+        return (
+          <li key={service.id}>
+            <a href={`/services/${service.id}`}>{service.name}</a>
+          </li>
+        );
       })}
     </StyledServiceList>
   );

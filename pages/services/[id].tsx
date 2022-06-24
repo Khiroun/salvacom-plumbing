@@ -11,8 +11,7 @@ const ServicePage = () => {
   const { getService, service } = useGetService();
   useEffect(() => {
     if (typeof id === "string") getService(id);
-  }, []);
-  console.log(service);
+  }, [id]);
   return (
     <div>
       <Navbar />
