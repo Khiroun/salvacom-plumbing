@@ -1,4 +1,4 @@
-import { Box, Paper, Typography, useTheme, useThemeProps } from "@mui/material";
+import { Box, Paper, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { FC } from "react";
 type Props = {
