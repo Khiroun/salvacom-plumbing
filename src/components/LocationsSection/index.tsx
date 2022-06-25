@@ -20,9 +20,9 @@ const LocationsSection = () => {
       setPushPins(pushPins);
     });
   }, []);
-  console.log({ pushPins });
+
   return (
-    <Container>
+    <Container id="locations">
       <Typography variant="h1" textAlign="center" color="#153250">
         Nos Sites
       </Typography>

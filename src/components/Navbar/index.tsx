@@ -11,15 +11,15 @@ import Wrapper from "./Wrapper";
 const menuItems = [
   {
     name: "Nos services",
-    link: "#services",
+    link: "/#services",
   },
   {
     name: "Nos sites",
-    link: "/locations",
+    link: "/#locations",
   },
   {
     name: "Nous conatcter",
-    link: "#contact",
+    link: "/#contact",
   },
 ];
 
