@@ -8,7 +8,7 @@ const Heading = () => {
       textAlign="center"
       fontFamily="Open Sans"
     >
-      Contactez nous
+      Commander
     </Typography>
   );
 };
