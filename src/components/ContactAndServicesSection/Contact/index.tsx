@@ -29,6 +29,7 @@ const Contact = () => {
   const [selectedLoc, setSelectedLoc] = useState("");
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  //Whats the error
   useEffect(() => {
     getAll("sites").then((data) => {
       setLocations(data);
