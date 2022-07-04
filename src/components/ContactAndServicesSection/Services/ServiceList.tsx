@@ -7,7 +7,6 @@ const ServiceList = () => {
   useEffect(() => {
     getServices();
   }, []);
-  console.log({ services });
   if (loading) return <CircularProgress />;
   return (
     <StyledServiceList>
