@@ -44,6 +44,19 @@ const Step2: FC<Props> = ({
               >
                 {service.name}
               </Typography>
+              <Typography
+                variant="h6"
+                color="white"
+                sx={{
+                  position: "absolute",
+                  bottom: "1em",
+                  color: "#153250",
+                  fontWeight: "700",
+                }}
+              >
+                {`${service.price[0]}da-${service.price[1]}da`}
+              </Typography>
+
               <img src={service.imageUrl} width="100%" />
             </Paper>
           </Grid>
