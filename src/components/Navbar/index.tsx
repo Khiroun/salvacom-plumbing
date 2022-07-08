@@ -49,9 +49,16 @@ const Navbar = () => {
           letterSpacing: ".3rem",
           color: "inherit",
           textDecoration: "none",
+          width: "100px",
+          mt: 1,
         }}
       >
-        LOGO
+        <img
+          src="/logo.jpg"
+          style={{
+            maxWidth: "100%",
+          }}
+        />
       </Typography>
 
       <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
