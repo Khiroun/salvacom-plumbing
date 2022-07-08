@@ -1,11 +1,7 @@
 import styled from "@emotion/styled";
+import config from "../../../siteConfig.json";
 const Title = () => {
-  return (
-    <StyledTitle>
-      Les services de plomberie et de nettoyage des canalisations sont
-      disponibles 24 heures sur 24, 7 jours sur 7.
-    </StyledTitle>
-  );
+  return <StyledTitle>{config.section3.heading}</StyledTitle>;
 };
 const StyledTitle = styled.h2`
   text-align: center;

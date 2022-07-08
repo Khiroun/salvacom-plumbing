@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Footer, Navbar } from "../../src/components";
@@ -14,6 +15,9 @@ const ServicePage = () => {
   }, [id]);
   return (
     <div>
+      <Head>
+        <title>{service.name}</title>
+      </Head>
       <Navbar />
       <ServicePageHero headingText={service.name} />
       <ServicePageBody

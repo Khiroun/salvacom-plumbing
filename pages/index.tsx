@@ -7,6 +7,7 @@ import {
   ContactAndServicesSection,
   Footer,
 } from "../src/components";
+import config from "../src/siteConfig.json";
 const LocationsSection = dynamic(
   () => import("../src/components/LocationsSection"),
   {
@@ -17,7 +18,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>{config.siteName}</title>
         <link rel="icon" href="/favicon.ico" />
         <link
           href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"

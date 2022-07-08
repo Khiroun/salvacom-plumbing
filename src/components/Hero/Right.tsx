@@ -1,11 +1,9 @@
 import styled from "@emotion/styled";
+import config from "../../siteConfig.json";
 const Right = () => {
   return (
     <Wrapper>
-      <Image
-        src="https://www.gmplumbingcorporation.com/assets/mainstage/mainstage-v1-img.2201190750277.jpg"
-        alt=""
-      />
+      <Image src={config.section1.image} alt="" />
     </Wrapper>
   );
 };

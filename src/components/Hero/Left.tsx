@@ -1,22 +1,17 @@
 import styled from "@emotion/styled";
+import config from "../../siteConfig.json";
 const Left = () => {
   return (
     <Wrapper>
       <HeadingWrapper>
         <Heading>
-          <HeadingLine1>Solutions de plomberie</HeadingLine1>
-          <HeadingLine2>Depuis plus de 10 ans !</HeadingLine2>
+          <HeadingLine1>{config.section1.heading.line1}</HeadingLine1>
+          <HeadingLine2>{config.section1.heading.line2}</HeadingLine2>
         </Heading>
       </HeadingWrapper>
       <TextWrapper>
         <TextInner>
-          <p>
-            Chez XYZ Plumbing Corporation, nous nous engageons à trouver la
-            bonne solution pour votre maison ou votre entreprise. Nous sommes
-            fiers de servir les comtés de depuis des décennies et nous sommes
-            impatients de travailler avec vous pour trouver la meilleure réponse
-            à votre problème de plomberie.
-          </p>
+          <p>{config.section1.description}</p>
         </TextInner>
       </TextWrapper>
     </Wrapper>

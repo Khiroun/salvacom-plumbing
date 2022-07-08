@@ -1,12 +1,9 @@
 import styled from "@emotion/styled";
+import config from "../../siteConfig.json";
 const DescriptionSection = () => {
   return (
     <Container>
-      <Title>
-        Nous offrons nos services de plomberie dans la région de Draria, ainsi
-        que les zones environnantes. Nos services d'urgence et non urgents
-        incluent les propriétés résidentielles, commerciales et industrielles.
-      </Title>
+      <Title>{config.section2.text}</Title>
     </Container>
   );
 };

@@ -1,11 +1,12 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { FaFacebookF } from "react-icons/fa";
+import config from "../../siteConfig.json";
 const Footer = () => {
   return (
     <Box component="footer" padding="1rem" bgcolor="#4b4c4d" marginTop="1rem">
       <Box display="flex" alignItems="center" justifyContent="center">
-        <a href="https://www.facebook.com/profile.php?id=100072089822341">
+        <a href={config.facebook}>
           <FaFacebookF color="#bebdbd" />
         </a>
       </Box>
@@ -16,7 +17,7 @@ const Footer = () => {
           display="block"
           marginTop="1rem"
         >
-          Copyright @ 2022 | KHIROUN | All Rights Reserved
+          Copyright @ 2022 | {config.siteName} | All Rights Reserved
         </Typography>
       </Box>
     </Box>
