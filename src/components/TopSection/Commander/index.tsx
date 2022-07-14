@@ -87,6 +87,7 @@ const Commander = () => {
         onClick={nextButtonClicked}
         sx={{
           opacity: 1,
+          display: sent ? "none" : "inhirit",
         }}
       >
         {step === 4 ? "ENVOYER" : "SUIVANT"}
