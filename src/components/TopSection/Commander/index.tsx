@@ -20,7 +20,7 @@ const Step3 = dynamic(
 
 const Commander = () => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [services, setServices] = useState([]);
   const [step, setStep] = useState(1);
@@ -46,14 +46,14 @@ const Commander = () => {
       setLoading(true);
       await addDocument("commandes", {
         name,
-        email,
+        address,
         phone,
         selectedLoc,
         selectedService,
         timestamp: Date(),
       });
       setName("");
-      setEmail("");
+      setAddress("");
       setPhone("");
       setSelectedLoc("");
       setSelectedService("");
@@ -63,8 +63,7 @@ const Commander = () => {
     }
   };
   const renderSendButton = () => {
-    const step1Valid =
-      validateName(name) && validatePhone(phone) && validateEmail(email);
+    const step1Valid = validateName(name) && validatePhone(phone);
     const step2Valid = selectedService !== "";
     const step3Valid = selectedLoc !== "";
     const disabled =
@@ -88,7 +87,6 @@ const Commander = () => {
   if (loading) return <CircularProgress size={50} />;
   return (
     <Box padding="1rem" id="contact">
-      <Heading />
       {sent && (
         <Typography variant="h3" textAlign="center" color="white">
           Votre commande a bien été envoyée
@@ -98,10 +96,10 @@ const Commander = () => {
         <Step1
           name={name}
           phone={phone}
-          email={email}
+          address={address}
           setName={setName}
           setPhone={setPhone}
-          setEmail={setEmail}
+          setAddress={setAddress}
         />
       )}
       {!sent && step === 2 && (

@@ -1,6 +1,8 @@
+import styled from "@emotion/styled";
 import { Box, Paper, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { FC } from "react";
+import Heading from "./Heading";
 type Props = {
   services: any[];
   selectedService: string;
@@ -13,57 +15,49 @@ const Step2: FC<Props> = ({
 }) => {
   const theme = useTheme();
   return (
-    <Grid container sx={{ mb: 2 }}>
-      {services.map((service) => {
-        return (
-          <Grid key={service.id} item md={4} sm={4}>
-            <Paper
-              sx={{ padding: "1rem", width: "100%", position: "relative" }}
-              onClick={() => setSelectedService(service.id)}
-              style={{
-                backgroundColor:
-                  service.id === selectedService
-                    ? theme.palette.secondary.main
-                    : "white",
-              }}
-            >
-              <Box
-                position="absolute"
-                top="5%"
-                left="5%"
-                width="90%"
-                height="90%"
-                bgcolor="rgba(0,0,0,0.2)"
-              />
-              <Typography
-                variant="h5"
-                color="white"
+    <>
+      <Heading text="Séléctionnez un service" />
+      <Grid container sx={{ mb: 2 }} spacing={5}>
+        {services.map((service) => {
+          return (
+            <Grid key={service.id} item md={6} sm={6}>
+              <Card
                 sx={{
-                  position: "absolute",
+                  aspectRatio: "1",
+                  p: 2,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 2,
                 }}
-              >
-                {service.name}
-              </Typography>
-              <Typography
-                variant="h6"
-                color="white"
-                sx={{
-                  position: "absolute",
-                  bottom: "1em",
-                  color: "#153250",
-                  fontWeight: "700",
+                onClick={() => {
+                  setSelectedService(service.id);
                 }}
+                active={selectedService === service.id}
               >
-                {`${service.price[0]}da-${service.price[1]}da`}
-              </Typography>
-
-              <img src={service.imageUrl} width="100%" />
-            </Paper>
-          </Grid>
-        );
-      })}
-    </Grid>
+                <ServiceName
+                  textAlign="center"
+                  fontSize="1.5em"
+                  active={selectedService === service.id}
+                >
+                  {service.name}
+                </ServiceName>
+              </Card>
+            </Grid>
+          );
+        })}
+      </Grid>
+    </>
   );
 };
 
 export default Step2;
+
+const Card = styled(Box)<{ active: boolean }>`
+  background-color: ${({ active }) => (active ? "#153250" : "white")};
+  transition: all 0.3s ease-in;
+`;
+const ServiceName = styled(Typography)<{ active: boolean }>`
+  color: ${({ active }) => (active ? "white" : "#153250")};
+  transition: all 0.3s ease-in;
+`;

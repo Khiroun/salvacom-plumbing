@@ -44,17 +44,13 @@ const Navbar = () => {
         sx={{
           mr: 2,
           display: { xs: "none", md: "flex" },
-          fontFamily: "monospace",
-          fontWeight: 700,
-          letterSpacing: ".3rem",
-          color: "inherit",
           textDecoration: "none",
           width: "100px",
           mt: 1,
         }}
       >
         <img
-          src="/logo.jpg"
+          src="/logo1.jpg"
           style={{
             maxWidth: "100%",
           }}
@@ -114,7 +110,12 @@ const Navbar = () => {
           textDecoration: "none",
         }}
       >
-        LOGO
+        <img
+          src="/logo1.jpg"
+          style={{
+            maxWidth: "100%",
+          }}
+        />
       </Typography>
       <Box
         sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}

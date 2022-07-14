@@ -1,6 +1,9 @@
 import Typography from "@mui/material/Typography";
-
-const Heading = () => {
+import { FC } from "react";
+type Props = {
+  text?: string;
+};
+const Heading: FC<Props> = ({ text }) => {
   return (
     <Typography
       variant="h2"
@@ -8,7 +11,7 @@ const Heading = () => {
       textAlign="center"
       fontFamily="Open Sans"
     >
-      Commander
+      {text ? text : "Commander"}
     </Typography>
   );
 };

@@ -68,6 +68,9 @@ const Content = styled.div`
   margin-right: auto;
   margin-left: auto;
   position: relative;
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 export default TopSection;
 
@@ -76,6 +79,10 @@ const Left = styled.div`
   --widgets-spacing: 20px;
   position: relative;
   display: flex;
+  @media (max-width: 768px) {
+    width: 90%;
+    margin: auto;
+  }
 `;
 const LeftInner = styled.div`
   align-content: center;
@@ -121,6 +128,10 @@ const Heading = styled.h1`
   border: 0;
   outline: 0;
   vertical-align: baseline;
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 40px;
+  }
 `;
 const SubHeadingWrapper = styled.div`
   text-align: left;
@@ -163,4 +174,12 @@ const ContactButton = styled.a`
   border-width: 0px 0px 0px 0px;
 `;
 
-const Right = styled.div``;
+const Right = styled.div`
+  width: 45.981%;
+  --widgets-spacing: 20px;
+  position: relative;
+  display: flex;
+  @media (max-width: 768px) {
+    width: inherit;
+  }
+`;
