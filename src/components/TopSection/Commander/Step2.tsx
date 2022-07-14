@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { FC } from "react";
 import Heading from "./Heading";
@@ -13,17 +13,21 @@ const Step2: FC<Props> = ({
   selectedService,
   setSelectedService,
 }) => {
-  const theme = useTheme();
   return (
     <>
       <Heading text="Séléctionnez un service" />
-      <Grid container sx={{ mb: 2 }} spacing={5}>
+      <Grid
+        container
+        sx={{
+          mb: 2,
+        }}
+        spacing={5}
+      >
         {services.map((service) => {
           return (
-            <Grid key={service.id} item md={6} sm={6}>
+            <Grid key={service.id} item md={6} sm={12} xs={12}>
               <Card
                 sx={{
-                  aspectRatio: "1",
                   p: 2,
                   display: "flex",
                   alignItems: "center",
@@ -56,6 +60,9 @@ export default Step2;
 const Card = styled(Box)<{ active: boolean }>`
   background-color: ${({ active }) => (active ? "#153250" : "white")};
   transition: all 0.3s ease-in;
+  @media (max-width: 768px) {
+    // width: 100%;
+  }
 `;
 const ServiceName = styled(Typography)<{ active: boolean }>`
   color: ${({ active }) => (active ? "white" : "#153250")};

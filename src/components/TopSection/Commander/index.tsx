@@ -8,6 +8,7 @@ import { validateEmail, validateName, validatePhone } from "../../../utils";
 import Step2 from "./Step2";
 import dynamic from "next/dynamic";
 import { CircularProgress, Typography } from "@mui/material";
+import Step4 from "./Step4";
 
 const Step3 = dynamic(
   () => {
@@ -25,10 +26,15 @@ const Commander = () => {
   const [services, setServices] = useState([]);
   const [step, setStep] = useState(1);
   const [selectedService, setSelectedService] = useState("");
+  const [selectedSubService, setSelectedSubService] = useState("");
   const [locations, setLocations] = useState([]);
   const [selectedLoc, setSelectedLoc] = useState("");
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const selectedServiceObject = services.find(
+    (item) => item.id === selectedService
+  );
+  console.log({ services });
   //Whats the error
   useEffect(() => {
     getAll("sites").then((data) => {
@@ -41,8 +47,8 @@ const Commander = () => {
     });
   }, []);
   const nextButtonClicked = async () => {
-    step < 3 && setStep((s) => s + 1);
-    if (step === 3) {
+    step < 4 && setStep((s) => s + 1);
+    if (step === 4) {
       setLoading(true);
       await addDocument("commandes", {
         name,
@@ -50,6 +56,7 @@ const Commander = () => {
         phone,
         selectedLoc,
         selectedService,
+        selectedSubService,
         timestamp: Date(),
       });
       setName("");
@@ -65,11 +72,13 @@ const Commander = () => {
   const renderSendButton = () => {
     const step1Valid = validateName(name) && validatePhone(phone);
     const step2Valid = selectedService !== "";
-    const step3Valid = selectedLoc !== "";
+    const step3Valid = selectedSubService !== "";
+    const step4Valid = selectedLoc !== "";
     const disabled =
       (step === 1 && !step1Valid) ||
       (step === 2 && !step2Valid) ||
       (step === 3 && !step3Valid);
+    step === 4 && !step4Valid;
     return (
       <Button
         variant="contained"
@@ -80,7 +89,7 @@ const Commander = () => {
           opacity: 1,
         }}
       >
-        {step === 3 ? "ENVOYER" : "SUIVANT"}
+        {step === 4 ? "ENVOYER" : "SUIVANT"}
       </Button>
     );
   };
@@ -111,6 +120,15 @@ const Commander = () => {
       )}
       {!sent && step === 3 && (
         <Step3
+          subServices={
+            selectedServiceObject ? selectedServiceObject.subServices : []
+          }
+          selectedSubService={selectedSubService}
+          setSelectedSubService={setSelectedSubService}
+        />
+      )}
+      {!sent && step === 4 && (
+        <Step4
           locations={locations}
           selectedLoc={selectedLoc}
           setSelectedLoc={setSelectedLoc}

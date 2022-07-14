@@ -51,6 +51,9 @@ const Wrapper = styled.section`
   padding: 220px 0px 180px 0px;
   --widgets-spacing: 20px;
   position: relative;
+  @media (max-width: 768px) {
+    padding: 110px 0px 90px 0px;
+  }
 `;
 const Overlay = styled.div`
   background-color: #000000;
