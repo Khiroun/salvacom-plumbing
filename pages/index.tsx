@@ -35,7 +35,6 @@ export default function Home() {
       <Hero />
       <DescriptionSection />
       <ContactAndServicesSection />
-      <LocationsSection />
       <Footer />
     </div>
   );
