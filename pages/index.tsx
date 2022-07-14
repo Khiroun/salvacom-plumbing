@@ -32,7 +32,6 @@ export default function Home() {
       </Head>
       <Navbar />
       <TopSection />
-      <Hero />
       <DescriptionSection />
       <ContactAndServicesSection />
       <Footer />
