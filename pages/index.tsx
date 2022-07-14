@@ -7,6 +7,7 @@ import {
   ContactAndServicesSection,
   Footer,
 } from "../src/components";
+import TopSection from "../src/components/TopSection";
 import config from "../src/siteConfig.json";
 const LocationsSection = dynamic(
   () => import("../src/components/LocationsSection"),
@@ -30,6 +31,7 @@ export default function Home() {
         />
       </Head>
       <Navbar />
+      <TopSection />
       <Hero />
       <DescriptionSection />
       <ContactAndServicesSection />
