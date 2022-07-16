@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import Head from "next/head";
 import {
   Navbar,
@@ -6,14 +5,10 @@ import {
   ServicesSection,
   Footer,
 } from "../src/components";
+import LocationsSection from "../src/components/LocationsSection";
 import TopSection from "../src/components/TopSection";
 import config from "../src/siteConfig.json";
-const LocationsSection = dynamic(
-  () => import("../src/components/LocationsSection"),
-  {
-    ssr: false,
-  }
-);
+
 export default function Home() {
   return (
     <div>
@@ -33,6 +28,7 @@ export default function Home() {
       <TopSection />
       <DescriptionSection />
       <ServicesSection />
+      <LocationsSection />
       <Footer />
     </div>
   );
