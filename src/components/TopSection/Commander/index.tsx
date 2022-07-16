@@ -1,14 +1,14 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
-import { addDocument, getAll } from "../../../firebase";
+import { getAll } from "../../../firebase";
 import Step1 from "./Step1";
-import Heading from "./Heading";
-import { validateEmail, validateName, validatePhone } from "../../../utils";
+import { validateName, validatePhone } from "../../../utils";
 import Step2 from "./Step2";
 import dynamic from "next/dynamic";
 import { CircularProgress, Typography } from "@mui/material";
 import Step4 from "./Step4";
+import addOrder from "./addOrder";
 
 const Step3 = dynamic(
   () => {
@@ -34,7 +34,6 @@ const Commander = () => {
   const selectedServiceObject = services.find(
     (item) => item.id === selectedService
   );
-  console.log({ services });
   //Whats the error
   useEffect(() => {
     getAll("sites").then((data) => {
@@ -50,15 +49,14 @@ const Commander = () => {
     step < 4 && setStep((s) => s + 1);
     if (step === 4) {
       setLoading(true);
-      await addDocument("commandes", {
+      await addOrder(
         name,
         address,
         phone,
         selectedLoc,
         selectedService,
-        selectedSubService,
-        timestamp: Date(),
-      });
+        selectedSubService
+      );
       setName("");
       setAddress("");
       setPhone("");
