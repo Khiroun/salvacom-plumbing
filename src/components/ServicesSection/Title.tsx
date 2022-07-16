@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import config from "../../../siteConfig.json";
+import config from "../../siteConfig.json";
 const Title = () => {
   return <StyledTitle>{config.section3.heading}</StyledTitle>;
 };

@@ -2,9 +2,8 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import {
   Navbar,
-  Hero,
   DescriptionSection,
-  ContactAndServicesSection,
+  ServicesSection,
   Footer,
 } from "../src/components";
 import TopSection from "../src/components/TopSection";
@@ -33,7 +32,7 @@ export default function Home() {
       <Navbar />
       <TopSection />
       <DescriptionSection />
-      <ContactAndServicesSection />
+      <ServicesSection />
       <Footer />
     </div>
   );
