@@ -11,12 +11,13 @@ type Props = {
 };
 const ServiceItem: FC<Props> = ({ service }) => {
   console.log({ service });
+  const descriptionMaxLenght = 150;
   const description =
-    service.description.length > 200
-      ? service.description.slice(0, 200) + "..."
+    service.description.length > descriptionMaxLenght
+      ? service.description.slice(0, descriptionMaxLenght) + "..."
       : service.description;
   return (
-    <Grid item md={3}>
+    <StyledGrid item md={4} sm={6} xs={12} lg={3}>
       <Container>
         <ServiceImage src={service.imageUrl} />
         <ServiceCard>
@@ -48,7 +49,7 @@ const ServiceItem: FC<Props> = ({ service }) => {
           </Button>
         </ServiceCard>
       </Container>
-    </Grid>
+    </StyledGrid>
   );
 };
 const Container = styled.div`
@@ -57,7 +58,7 @@ const Container = styled.div`
   justify-content: center;
 `;
 const ServiceImage = styled.img`
-  max-width: 100%;
+  width: 100%;
 `;
 const ServiceCard = styled.div`
   width: 60%;
@@ -65,5 +66,10 @@ const ServiceCard = styled.div`
   padding: 2em;
   top: 50%;
   background: white;
+`;
+const StyledGrid = styled(Grid)`
+  @media (max-width: 768px) {
+    min-height: 80vh;
+  }
 `;
 export default ServiceItem;
