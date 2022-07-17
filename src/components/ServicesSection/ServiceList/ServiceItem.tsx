@@ -10,7 +10,6 @@ type Props = {
   };
 };
 const ServiceItem: FC<Props> = ({ service }) => {
-  console.log({ service });
   const descriptionMaxLenght = 150;
   const description =
     service.description.length > descriptionMaxLenght
