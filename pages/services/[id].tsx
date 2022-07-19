@@ -13,6 +13,7 @@ const ServicePage = () => {
   useEffect(() => {
     if (typeof id === "string") getService(id);
   }, [id]);
+  const subServices = service.subServices ? service.subServices : [];
   return (
     <div>
       <Head>
@@ -23,6 +24,7 @@ const ServicePage = () => {
       <ServicePageBody
         description={service.description}
         imageUrl={service.imageUrl}
+        subServices={subServices}
       />
       <Footer />
     </div>
