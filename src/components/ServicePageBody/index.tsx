@@ -15,7 +15,13 @@ type Props = {
 };
 const ServicePageBody: FC<Props> = ({ imageUrl, description, subServices }) => {
   return (
-    <Grid container padding="2rem" spacing={4} bgcolor="#F2F8F7">
+    <Grid
+      container
+      padding="2rem"
+      spacing={4}
+      bgcolor="#F2F8F7"
+      alignItems="center"
+    >
       <Grid item md={6}>
         <img
           src={imageUrl}
