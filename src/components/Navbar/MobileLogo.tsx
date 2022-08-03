@@ -16,7 +16,7 @@ const MobileLogo = () => {
       }}
     >
       <img
-        src="/logo1.jpg"
+        src="/logo3.png"
         style={{
           maxWidth: "30%",
         }}

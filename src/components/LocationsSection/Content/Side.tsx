@@ -15,7 +15,7 @@ type Props = {
 const Side: FC<Props> = ({ sites }) => {
   const [selectedSite, setSelectedSite] = useState<any>({});
   return (
-    <Grid item md={3} bgcolor="#eee" borderRadius="10px" padding="1em">
+    <Grid item md={3} sm={12} bgcolor="#eee" borderRadius="10px" padding="1em">
       {sites.map((site) => {
         const address =
           site.address.length > 30
@@ -45,8 +45,11 @@ const Side: FC<Props> = ({ sites }) => {
                 spacing={1}
                 onClick={() => setSelectedSite(site)}
                 marginBottom="1rem"
+                style={{
+                  justifyContent: "center",
+                }}
               >
-                <Grid item md={6}>
+                <Grid item md={6} sm={12}>
                   <img
                     src={site.images[0]}
                     style={{
@@ -54,7 +57,13 @@ const Side: FC<Props> = ({ sites }) => {
                     }}
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid
+                  item
+                  md={6}
+                  sx={{
+                    width: "inherit",
+                  }}
+                >
                   <Typography variant="h6">{site.siteName}</Typography>
                   <Typography variant="caption">{address}</Typography>
                 </Grid>

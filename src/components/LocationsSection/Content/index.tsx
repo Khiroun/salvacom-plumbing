@@ -13,7 +13,7 @@ const Content = () => {
   }, []);
 
   return (
-    <Grid height="80vh" container spacing={1}>
+    <Grid minHeight="80vh" container spacing={1}>
       <Side sites={sites} />
       <SitesMap sites={sites} />
     </Grid>
