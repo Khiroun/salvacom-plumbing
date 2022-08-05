@@ -74,9 +74,9 @@ const Commander = () => {
     const step4Valid = selectedLoc !== "";
     const disabled =
       (step === 1 && !step1Valid) ||
-      (step === 2 && !step2Valid) ||
-      (step === 3 && !step3Valid);
-    step === 4 && !step4Valid;
+      (step === 2 && !step4Valid) ||
+      (step === 3 && !step2Valid);
+    step === 4 && !step3Valid;
     return (
       <Button
         variant="contained"
@@ -110,27 +110,28 @@ const Commander = () => {
           setAddress={setAddress}
         />
       )}
+
       {!sent && step === 2 && (
+        <Step4
+          locations={locations}
+          selectedLoc={selectedLoc}
+          setSelectedLoc={setSelectedLoc}
+        />
+      )}
+      {!sent && step === 3 && (
         <Step2
           services={services}
           selectedService={selectedService}
           setSelectedService={setSelectedService}
         />
       )}
-      {!sent && step === 3 && (
+      {!sent && step === 4 && (
         <Step3
           subServices={
             selectedServiceObject ? selectedServiceObject.subServices : []
           }
           selectedSubService={selectedSubService}
           setSelectedSubService={setSelectedSubService}
-        />
-      )}
-      {!sent && step === 4 && (
-        <Step4
-          locations={locations}
-          selectedLoc={selectedLoc}
-          setSelectedLoc={setSelectedLoc}
         />
       )}
       {renderSendButton()}
