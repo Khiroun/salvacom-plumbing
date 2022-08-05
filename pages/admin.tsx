@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 const AdminPage = () => {
   return (
     <div
@@ -5,6 +7,9 @@ const AdminPage = () => {
         minHeight: "100vh",
       }}
     >
+      <Head>
+        <title>Admin</title>
+      </Head>
       <iframe
         src="https://salvacom-plumbing-admin.vercel.app/"
         width="100%"
