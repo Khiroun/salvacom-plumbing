@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { FC } from "react";
 import { ReactBingmaps } from "react-bingmaps";
@@ -12,7 +11,11 @@ type Props = {
   selectedLoc: string;
   setSelectedLoc: (id: string) => void;
 };
-const Step4: FC<Props> = ({ locations, selectedLoc, setSelectedLoc }) => {
+const SiteSelectionStep: FC<Props> = ({
+  locations,
+  selectedLoc,
+  setSelectedLoc,
+}) => {
   const pushPins = [];
   locations.forEach((loc) => {
     pushPins.push({
@@ -41,6 +44,22 @@ const Step4: FC<Props> = ({ locations, selectedLoc, setSelectedLoc }) => {
           <>
             {locations.map((loc) => {
               return (
+                <Box key={loc.id}>
+                  <LocItem
+                    onClick={() => setSelectedLoc(loc.id)}
+                    style={{
+                      backgroundColor:
+                        loc.id === selectedLoc
+                          ? theme.palette.primary.main
+                          : "",
+                      color: loc.id === selectedLoc ? "white" : "#333",
+                    }}
+                  >
+                    {loc.siteName}
+                  </LocItem>
+                </Box>
+              );
+              /*return (
                 <MenuItem
                   key={loc.id}
                   onClick={() => setSelectedLoc(loc.id)}
@@ -52,7 +71,7 @@ const Step4: FC<Props> = ({ locations, selectedLoc, setSelectedLoc }) => {
                 >
                   {loc.siteName}
                 </MenuItem>
-              );
+              );*/
             })}
           </>
         </LocationList>
@@ -71,10 +90,33 @@ const LocationList = styled(Paper)`
   top: 0;
   left: 0;
   z-index: 1;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--mapBg);
+  padding: 2%;
+  margin-top: 1%;
+  max-height: 380px;
+  overflow-x: auto;
+  border-radius: 9px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+  color: #333;
+  width: 40%;
+`;
+const LocItem = styled.button`
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  outline: 0;
+  border-radius: 9px;
+  transition: 0.4s;
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-bottom: 1%;
+  border: 1px solid #e6e4e0;
 `;
 const Container = styled(Box)`
   min-width: 45vw;
   margin-bottom: 1em;
 `;
 
-export default Step4;
+export default SiteSelectionStep;
