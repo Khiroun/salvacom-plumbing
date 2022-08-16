@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import MenuItem from "@mui/material/MenuItem";
 import { FC } from "react";
 import { ReactBingmaps } from "react-bingmaps";
 import Heading from "./Heading";

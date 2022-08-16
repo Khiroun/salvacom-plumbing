@@ -7,7 +7,7 @@ import { validateName, validatePhone } from "../../../utils";
 import ServiceSelectionStep from "./ServiceSelectionStep";
 import { CircularProgress, Typography } from "@mui/material";
 import addOrder from "./addOrder";
-import SubServiceSelectionStep from "./SubServiceSelectionStep";
+
 import dynamic from "next/dynamic";
 
 const SiteSelectionStep = dynamic(() => import("./SiteSelectionStep"), {
@@ -19,16 +19,12 @@ const Commander = () => {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [services, setServices] = useState([]);
-  const [step, setStep] = useState(2);
-  const [selectedService, setSelectedService] = useState("");
-  const [selectedSubService, setSelectedSubService] = useState("");
+  const [step, setStep] = useState(1);
+  const [selectedService, setSelectedService] = useState([]);
   const [locations, setLocations] = useState([]);
   const [selectedLoc, setSelectedLoc] = useState("");
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
-  const selectedServiceObject = services.find(
-    (item) => item.id === selectedService
-  );
   //Whats the error
   useEffect(() => {
     getAll("sites").then((data) => {
@@ -41,22 +37,15 @@ const Commander = () => {
     });
   }, []);
   const nextButtonClicked = async () => {
-    step < 4 && setStep((s) => s + 1);
-    if (step === 4) {
+    step < 3 && setStep((s) => s + 1);
+    if (step === 3) {
       setLoading(true);
-      await addOrder(
-        name,
-        address,
-        phone,
-        selectedLoc,
-        selectedService,
-        selectedSubService
-      );
+      await addOrder(name, address, phone, selectedLoc, selectedService);
       setName("");
       setAddress("");
       setPhone("");
       setSelectedLoc("");
-      setSelectedService("");
+      setSelectedService([]);
       setStep(1);
       setSent(true);
       setLoading(false);
@@ -64,14 +53,12 @@ const Commander = () => {
   };
   const renderSendButton = () => {
     const userInfoStepValid = validateName(name) && validatePhone(phone);
-    const serviceSelectionStepValid = selectedService !== "";
-    const subServiceSelectionStepValid = selectedSubService !== "";
+    const serviceSelectionStepValid = selectedService.length > 0;
     const step4Valid = selectedLoc !== "";
     const disabled =
       (step === 1 && !userInfoStepValid) ||
       (step === 2 && !step4Valid) ||
       (step === 3 && !serviceSelectionStepValid);
-    step === 4 && !subServiceSelectionStepValid;
     return (
       <Button
         variant="contained"
@@ -83,7 +70,7 @@ const Commander = () => {
           display: sent ? "none" : "inhirit",
         }}
       >
-        {step === 4 ? "ENVOYER" : "SUIVANT"}
+        {step === 3 ? "ENVOYER" : "SUIVANT"}
       </Button>
     );
   };
@@ -120,15 +107,7 @@ const Commander = () => {
           setSelectedService={setSelectedService}
         />
       )}
-      {!sent && step === 4 && (
-        <SubServiceSelectionStep
-          subServices={
-            selectedServiceObject ? selectedServiceObject.subServices : []
-          }
-          selectedSubService={selectedSubService}
-          setSelectedSubService={setSelectedSubService}
-        />
-      )}
+
       {renderSendButton()}
     </Box>
   );

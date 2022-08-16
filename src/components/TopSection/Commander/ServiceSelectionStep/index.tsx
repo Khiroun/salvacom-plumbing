@@ -3,10 +3,10 @@ import Heading from "../Heading";
 import ServiceList from "./ServiceList";
 type Props = {
   services: any[];
-  selectedService: string;
-  setSelectedService: (id: string) => void;
+  selectedService: any[];
+  setSelectedService: (id: any[]) => void;
 };
-const Step2: FC<Props> = ({
+const ServiceSelectionStep: FC<Props> = ({
   services,
   selectedService,
   setSelectedService,
@@ -23,4 +23,4 @@ const Step2: FC<Props> = ({
   );
 };
 
-export default Step2;
+export default ServiceSelectionStep;

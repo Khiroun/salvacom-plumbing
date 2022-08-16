@@ -5,8 +5,7 @@ const addOrder = async (
   address: string,
   phone: string,
   selectedLoc: string,
-  selectedService: string,
-  selectedSubService: string
+  selectedService: any[]
 ) => {
   await addDocument("commandes", {
     name,
@@ -14,7 +13,6 @@ const addOrder = async (
     phone,
     selectedLoc,
     selectedService,
-    selectedSubService,
     timestamp: Date(),
     status: "reception",
   });
