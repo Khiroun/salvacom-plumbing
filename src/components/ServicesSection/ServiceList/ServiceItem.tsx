@@ -18,7 +18,7 @@ const ServiceItem: FC<Props> = ({ service }) => {
   return (
     <StyledGrid item md={4} sm={6} xs={12} lg={3}>
       <Container>
-        <ServiceImage src={service.imageUrl} />
+        <ServiceImage src={service.imageUrl || "/plumbing-logo.png"} />
         <ServiceCard>
           <Typography
             variant="h2"
