@@ -12,7 +12,7 @@ const Heading: FC<Props> = ({ text }) => {
       textAlign="center"
       fontFamily="Open Sans"
     >
-      {text ? text : "Commander"}
+      {text ? text : ""}
     </StyledHeading>
   );
 };
