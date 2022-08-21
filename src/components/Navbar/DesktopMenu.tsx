@@ -19,6 +19,12 @@ const DesktopMenu: FC<Props> = ({ menuItems }) => {
           <a href={item.link}>{item.name}</a>
         </Button>
       ))}
+      <Button
+        sx={{ my: 2, color: "white", display: "block", mx: 1 }}
+        variant="contained"
+      >
+        <a href="/#top-section">Commander</a>
+      </Button>
     </Box>
   );
 };

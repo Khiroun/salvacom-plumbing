@@ -4,7 +4,7 @@ import config from "../../siteConfig.json";
 import Commander from "./Commander";
 const TopSection = () => {
   return (
-    <Wrapper>
+    <Wrapper id="top-section">
       <Overlay />
       <Content>
         <Left>
