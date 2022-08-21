@@ -5,7 +5,7 @@ import { getAll } from "../../../firebase";
 import UserInfoStep from "./UserInfoStep";
 import { validateName, validatePhone } from "../../../utils";
 import ServiceSelectionStep from "./ServiceSelectionStep";
-import { CircularProgress, Typography } from "@mui/material";
+import { Alert, CircularProgress, Typography } from "@mui/material";
 import addOrder from "./addOrder";
 
 import dynamic from "next/dynamic";
@@ -25,6 +25,9 @@ const Commander = () => {
   const [selectedLoc, setSelectedLoc] = useState("");
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [step1ErrorMessage, setStep1ErrorMessage] = useState("");
+  const [step2ErrorMessage, setStep2ErrorMessage] = useState("");
+  const [step3ErrorMessage, setStep3ErrorMessage] = useState("");
   //Whats the error
   useEffect(() => {
     getAll("sites").then((data) => {
@@ -37,7 +40,6 @@ const Commander = () => {
     });
   }, []);
   const nextButtonClicked = async () => {
-    step < 3 && setStep((s) => s + 1);
     if (step === 3) {
       setLoading(true);
       await addOrder(name, address, phone, selectedLoc, selectedService);
@@ -49,7 +51,29 @@ const Commander = () => {
       setStep(1);
       setSent(true);
       setLoading(false);
+      return;
     }
+    if (step === 1 && !validateName(name)) {
+      setStep1ErrorMessage("Veuillez entrer un nom valide");
+      return;
+    }
+    if (step === 1 && !validatePhone(phone)) {
+      setStep1ErrorMessage("Veuillez entrer un numero de telephone valide");
+      return;
+    }
+    if (step === 1 && !address) {
+      setStep1ErrorMessage("Veuillez entrer une adresse");
+      return;
+    }
+    if (step === 2 && !selectedLoc) {
+      setStep2ErrorMessage("Veuillez choisir un site");
+      return;
+    }
+    if (step === 3 && !selectedService.length) {
+      setStep3ErrorMessage("Veuillez choisir un service");
+      return;
+    }
+    setStep((s) => s + 1);
   };
   const renderSendButton = () => {
     const userInfoStepValid = validateName(name) && validatePhone(phone);
@@ -63,7 +87,6 @@ const Commander = () => {
       <Button
         variant="contained"
         size="large"
-        disabled={disabled}
         onClick={nextButtonClicked}
         sx={{
           opacity: 1,
@@ -83,29 +106,44 @@ const Commander = () => {
         </Typography>
       )}
       {!sent && step === 1 && (
-        <UserInfoStep
-          name={name}
-          phone={phone}
-          address={address}
-          setName={setName}
-          setPhone={setPhone}
-          setAddress={setAddress}
-        />
+        <>
+          {step1ErrorMessage && (
+            <Alert severity="error">{step1ErrorMessage}</Alert>
+          )}
+          <UserInfoStep
+            name={name}
+            phone={phone}
+            address={address}
+            setName={setName}
+            setPhone={setPhone}
+            setAddress={setAddress}
+          />
+        </>
       )}
 
       {!sent && step === 2 && (
-        <SiteSelectionStep
-          locations={locations}
-          selectedLoc={selectedLoc}
-          setSelectedLoc={setSelectedLoc}
-        />
+        <>
+          {step2ErrorMessage && (
+            <Alert severity="error">{step2ErrorMessage}</Alert>
+          )}
+          <SiteSelectionStep
+            locations={locations}
+            selectedLoc={selectedLoc}
+            setSelectedLoc={setSelectedLoc}
+          />
+        </>
       )}
       {!sent && step === 3 && (
-        <ServiceSelectionStep
-          services={services}
-          selectedService={selectedService}
-          setSelectedService={setSelectedService}
-        />
+        <>
+          {step3ErrorMessage && (
+            <Alert severity="error">{step3ErrorMessage}</Alert>
+          )}
+          <ServiceSelectionStep
+            services={services}
+            selectedService={selectedService}
+            setSelectedService={setSelectedService}
+          />
+        </>
       )}
 
       {renderSendButton()}
