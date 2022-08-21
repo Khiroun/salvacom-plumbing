@@ -9,7 +9,7 @@ const DesktopMenu: FC<Props> = ({ menuItems }) => {
   return (
     <Box
       sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
-      justifyContent="center"
+      justifyContent="end"
     >
       {menuItems.map((item) => (
         <Button
