@@ -7,7 +7,6 @@ import { validateName, validatePhone } from "../../../utils";
 import ServiceSelectionStep from "./ServiceSelectionStep";
 import { Alert, CircularProgress, Typography } from "@mui/material";
 import addOrder from "./addOrder";
-
 import dynamic from "next/dynamic";
 
 const SiteSelectionStep = dynamic(() => import("./SiteSelectionStep"), {
@@ -28,6 +27,9 @@ const Commander = () => {
   const [step1ErrorMessage, setStep1ErrorMessage] = useState("");
   const [step2ErrorMessage, setStep2ErrorMessage] = useState("");
   const [step3ErrorMessage, setStep3ErrorMessage] = useState("");
+  let scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
   //Whats the error
   useEffect(() => {
     getAll("sites").then((data) => {
@@ -40,6 +42,7 @@ const Commander = () => {
     });
   }, []);
   const nextButtonClicked = async () => {
+    scrollToTop();
     if (step === 3) {
       setLoading(true);
       await addOrder(name, address, phone, selectedLoc, selectedService);
