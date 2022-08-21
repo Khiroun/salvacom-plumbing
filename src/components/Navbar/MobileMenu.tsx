@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 
 import { FC, MouseEvent, useState } from "react";
 import { useRouter } from "next/router";
+import { Button } from "@mui/material";
 type Props = {
   menuItems: any[];
 };
@@ -61,6 +62,14 @@ const MobileMenu: FC<Props> = ({ menuItems }) => {
             <Typography textAlign="center">{item.name}</Typography>
           </MenuItem>
         ))}
+        <MenuItem
+          onClick={() => {
+            handleCloseNavMenu();
+            router.push("/#top-section");
+          }}
+        >
+          <Button variant="contained">Commander</Button>
+        </MenuItem>
       </Menu>
     </Box>
   );
