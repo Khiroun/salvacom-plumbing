@@ -12,3 +12,12 @@ a{
 .Mui-disabled {
 background-color: #888 !important;
 }
+
+.user-info-step label.Mui-focused{
+    color: white
+}
+
+.user-info-step fieldset {
+    border-color: white !important;
+    
+}

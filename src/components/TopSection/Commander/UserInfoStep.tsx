@@ -27,7 +27,7 @@ const Form: FC<Props> = ({
   return (
     <>
       <Heading />
-      <Box marginTop="1rem">
+      <Box marginTop="1rem" className="user-info-step">
         <StyledTextField
           fullWidth
           label="NOM ET PRENOM"
@@ -68,6 +68,7 @@ const StyledTextField = styled(TextField)`
       color: red;
     }
   }
+
   margin-bottom: 1rem;
   input {
     color: #222;
