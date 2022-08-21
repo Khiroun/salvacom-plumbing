@@ -62,13 +62,16 @@ export default Form;
 const StyledTextField = styled(TextField)`
   border-color: #ccc;
   label {
-    color: #ccc;
+    color: #222;
+    font-weight: 500;
     span {
       color: red;
     }
   }
   margin-bottom: 1rem;
   input {
-    color: #fff;
+    color: #222;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.5em;
   }
 `;
