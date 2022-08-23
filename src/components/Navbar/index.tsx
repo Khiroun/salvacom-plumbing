@@ -15,7 +15,7 @@ const menuItems = [
   },
   {
     name: "Nous conatcter",
-    link: "/contact",
+    link: "/#contact-section",
   },
 ];
 

@@ -5,6 +5,7 @@ import {
   ServicesSection,
   Footer,
 } from "../src/components";
+import ContactSection from "../src/components/ContactSection";
 import LocationsSection from "../src/components/LocationsSection";
 import TopSection from "../src/components/TopSection";
 import config from "../src/siteConfig.json";
@@ -29,6 +30,7 @@ export default function Home() {
       <DescriptionSection />
       <ServicesSection />
       <LocationsSection />
+      <ContactSection />
       <Footer />
     </div>
   );

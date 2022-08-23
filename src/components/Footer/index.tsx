@@ -16,6 +16,7 @@ const Footer = () => {
           textAlign="center"
           display="block"
           marginTop="1rem"
+          color="white"
         >
           Copyright @ 2022 | {config.siteName} | All Rights Reserved
         </Typography>
