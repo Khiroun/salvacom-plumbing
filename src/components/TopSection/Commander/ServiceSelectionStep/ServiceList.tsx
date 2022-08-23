@@ -28,6 +28,7 @@ const ServiceList: FC<Props> = ({
           name: subService.name,
           service: service.id,
           prix: (subService.price[0] + subService.price[1]) / 2,
+          priceRange: [subService.price[0], subService.price[1]],
         },
       ];
     });
