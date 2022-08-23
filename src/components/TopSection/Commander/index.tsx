@@ -79,13 +79,6 @@ const Commander = () => {
     setStep((s) => s + 1);
   };
   const renderSendButton = () => {
-    const userInfoStepValid = validateName(name) && validatePhone(phone);
-    const serviceSelectionStepValid = selectedService.length > 0;
-    const step4Valid = selectedLoc !== "";
-    const disabled =
-      (step === 1 && !userInfoStepValid) ||
-      (step === 2 && !step4Valid) ||
-      (step === 3 && !serviceSelectionStepValid);
     return (
       <Button
         variant="contained"
