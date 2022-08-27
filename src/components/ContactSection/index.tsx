@@ -6,6 +6,8 @@ import { ImLocation2 } from "react-icons/im";
 import { BsTelephoneForwardFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import siteConfig from "../../siteConfig.json";
+import Title from "./Title";
+import styled from "@emotion/styled";
 const ContactSection = () => {
   const theme = useTheme();
   const items = [
@@ -27,16 +29,20 @@ const ContactSection = () => {
   ];
   return (
     <>
-      <Box
+      <Container
         minHeight="70vh"
         bgcolor={theme.palette.primary.main}
         padding="5rem"
         id="contact-section"
       >
-        <Typography variant="h1" color="#fff" textAlign="center">
-          CONTACTEZ NOUS
-        </Typography>
-        <Grid container marginTop="4rem" spacing={8}>
+        <Title />
+        <Items
+          container
+          marginTop="4rem"
+          spacing={8}
+          alignItems="center"
+          justifyContent="center"
+        >
           {items.map((item) => {
             return (
               <Grid
@@ -55,9 +61,9 @@ const ContactSection = () => {
                 >
                   <item.icon color="#fff" size={50} />
                 </Box>
-                <Typography variant="h2" color="#fff">
+                <ItemTitle variant="h2" color="#fff">
                   {item.title}
-                </Typography>
+                </ItemTitle>
                 <Typography
                   color={theme.palette.primary.contrastText}
                   variant="body1"
@@ -69,8 +75,8 @@ const ContactSection = () => {
               </Grid>
             );
           })}
-        </Grid>
-      </Box>
+        </Items>
+      </Container>
       <iframe
         frameBorder={0}
         scrolling="no"
@@ -87,4 +93,19 @@ const ContactSection = () => {
   );
 };
 
+const Container = styled(Box)`
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+`;
+const Items = styled(Grid)`
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
+`;
+const ItemTitle = styled(Typography)`
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
 export default ContactSection;
