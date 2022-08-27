@@ -41,7 +41,7 @@ const TopSection = () => {
   );
 };
 const Wrapper = styled.section`
-  background-image: url("/plumber-installing-new-pipes.jpg");
+  background-image: url("/man-siana-dz.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -53,6 +53,7 @@ const Wrapper = styled.section`
   position: relative;
   @media (max-width: 768px) {
     padding: 110px 0px 90px 0px;
+    background-position-x: right;
   }
 `;
 const Overlay = styled.div`
