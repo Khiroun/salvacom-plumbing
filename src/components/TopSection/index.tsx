@@ -5,30 +5,33 @@ import Commander from "./Commander";
 import { getDocument } from "../../firebase";
 const TopSection = () => {
   const [phone, setPhone] = useState("");
+  const [loadingData, setLoadingData] = useState(true);
+  const [headingData, setHeadingData] = useState<null | any>(null);
+  useEffect(() => {
+    getDocument("siteSettings", "heading-section").then((doc) => {
+      setHeadingData(doc);
+    });
+  }, []);
   useEffect(() => {
     getDocument("siteSettings", "general-info").then((doc: any) => {
       setPhone(doc.phone);
     });
   }, []);
+  if (!headingData) return <div style={{ height: "100vh" }}></div>;
   return (
-    <Wrapper id="top-section">
+    <Wrapper id="top-section" bg={headingData.backgroundImage}>
       <Overlay />
       <Content>
         <Left>
           <LeftInner>
             <HeadingWrapper>
               <HeadingContainer>
-                <Heading>
-                  Solutions de plomberie Depuis plus de 10 ans !
-                </Heading>
+                <Heading>{headingData.title}</Heading>
               </HeadingContainer>
             </HeadingWrapper>
             <SubHeadingWrapper>
               <SubHeadingContainer>
-                <SubHeading>
-                  Chez Siana DZ, nous nous engageons à trouver la bonne solution
-                  pour votre maison ou votre entreprise.
-                </SubHeading>
+                <SubHeading>{headingData.subTitle}</SubHeading>
               </SubHeadingContainer>
             </SubHeadingWrapper>
             <ContactButtonWrapper>
@@ -47,8 +50,9 @@ const TopSection = () => {
     </Wrapper>
   );
 };
-const Wrapper = styled.section`
+const Wrapper = styled.section<{ bg: string }>`
   background-image: url("/man-siana-dz.jpg");
+  background-image: ${({ bg }) => `url("${bg}")`};
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
