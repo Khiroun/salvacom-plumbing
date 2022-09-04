@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
@@ -5,11 +6,21 @@ import { useTheme } from "@mui/material";
 import { ImLocation2 } from "react-icons/im";
 import { BsTelephoneForwardFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-import siteConfig from "../../siteConfig.json";
 import Title from "./Title";
 import styled from "@emotion/styled";
+import { getDocument } from "../../firebase";
 const ContactSection = () => {
   const theme = useTheme();
+  const [siteConfig, setSiteConfig] = useState({
+    address: "",
+    phone: "",
+    email: "",
+  });
+  useEffect(() => {
+    getDocument("siteSettings", "general-info").then((doc: any) => {
+      setSiteConfig(doc);
+    });
+  }, []);
   const items = [
     {
       title: "ADRESSE",
@@ -19,7 +30,7 @@ const ContactSection = () => {
     {
       title: "TEL",
       icon: BsTelephoneForwardFill,
-      text: siteConfig.telephone,
+      text: siteConfig.phone,
     },
     {
       title: "EMAIL",

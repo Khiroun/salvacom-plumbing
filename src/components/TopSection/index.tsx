@@ -1,8 +1,15 @@
+import { useState, useEffect } from "react";
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import config from "../../siteConfig.json";
 import Commander from "./Commander";
+import { getDocument } from "../../firebase";
 const TopSection = () => {
+  const [phone, setPhone] = useState("");
+  useEffect(() => {
+    getDocument("siteSettings", "general-info").then((doc: any) => {
+      setPhone(doc.phone);
+    });
+  }, []);
   return (
     <Wrapper id="top-section">
       <Overlay />
@@ -26,7 +33,7 @@ const TopSection = () => {
             </SubHeadingWrapper>
             <ContactButtonWrapper>
               <ContactButtonContainer>
-                <ContactButton href={`tel:${config.telephone}`}>
+                <ContactButton href={`tel:${phone}`}>
                   Appelez nous
                 </ContactButton>
               </ContactButtonContainer>
