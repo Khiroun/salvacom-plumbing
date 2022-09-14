@@ -6,7 +6,7 @@ type Props = {
 const EstimatedPrice: FC<Props> = ({ estimatedPrice }) => {
   return (
     <Typography variant="h4" color="#fff">
-      Prix estimé: {estimatedPrice} da
+      Prix estimé: {estimatedPrice},00 da
     </Typography>
   );
 };

@@ -31,9 +31,7 @@ const SubServiceList: FC<Props> = ({
             <span>
               {subService.price[0]}da-{subService.price[1]}da
             </span>
-            <span onClick={() => selectSubService(subService)}>
-              {isSelectedSubService(subService) ? "-" : "+"}
-            </span>
+            <span>{isSelectedSubService(subService) ? "-" : "+"}</span>
           </SubServiceItem>
         );
       })}
